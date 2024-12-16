@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Spatial Pattern of Electric Vehicle Population in State of Washington</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-81e35ebdb4125010edbabe6010586085.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: black;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: black;
+background: #E69F0095;
+      }
+</style>
+
+
+<meta name="citation_title" content="Spatial Pattern of Electric Vehicle Population in State of Washington">
+<meta name="citation_author" content="Christy Hsu">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=Literate programming;,citation_author=Donald E. Knuth;,citation_publication_date=1984-05;,citation_cover_date=1984-05;,citation_year=1984;,citation_fulltext_html_url=https://doi.org/10.1093/comjnl/27.2.97;,citation_issue=2;,citation_doi=10.1093/comjnl/27.2.97;,citation_issn=0010-4620;,citation_volume=27;,citation_journal_title=Comput. J.;,citation_publisher=Oxford University Press, Inc.;">
+<meta name="citation_reference" content="citation_title=Potential for widespread electrification of personal vehicle travel in the united states;,citation_abstract=Electric vehicles can contribute to climate change mitigation if coupled with decarbonized electricity, but only if vehicle range matches travellers’ needs. Evaluating electric vehicle range against a population’s needs is challenging because detailed driving behaviour must be taken into account. Here we develop a model to combine information from coarse-grained but expansive travel surveys with high-resolution GPS data to estimate the energy requirements of personal vehicle trips across the US. We find that the energy requirements of 87;,citation_author=Zachary A. Needell;,citation_author=James Mcnerney;,citation_author=Michael T. Chang;,citation_author=Jessika E. Trancik;,citation_publication_date=2016-08;,citation_cover_date=2016-08;,citation_year=2016;,citation_fulltext_html_url=https://proxy.library.georgetown.edu/login?url=https://www.proquest.com/scholarly-journals/potential-widespread-electrification-personal/docview/2218221398/se-2;,citation_volume=1;,citation_journal_title=Nature Energy;">
+<meta name="citation_reference" content="citation_title=Gridded population of the world, version 4 (GPWv4): Population count adjusted to match 2015 revision of UN WPP country totals, revision 11;,citation_author=Center International Earth Science Information Network (CIESIN) - Columbia University;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_fulltext_html_url=https://doi.org/10.7927/H4PN93PB;,citation_doi=10.7927/H4PN93PB;,citation_publisher=NASA Socioeconomic Data; Applications Center (SEDAC);">
+<meta name="citation_reference" content="citation_title=Electric Vehicle Population Data  Data.WA  State of Washington;,citation_publication_date=2024-10;,citation_cover_date=2024-10;,citation_year=2024;,citation_publisher=https://data.wa.gov/Transportation/Electric-Vehicle-Population-Data/f6w7-q2d2/about_data; data.wa.gov;">
+<meta name="citation_reference" content="citation_title=Alternative Fuels Data Center: Vehicle Cost Calculator;,citation_publisher=https://afdc.energy.gov/calc/;">
+<meta name="citation_reference" content="citation_title=Alternative Fuels Data Center: Electric Vehicle Charging Station Locations;,citation_language=en-US;,citation_publisher=https://afdc.energy.gov/fuels/electricity-locations;">
+<meta name="citation_reference" content="citation_title=Index of /geo/tiger/TIGER2020PL/STATE/53_WASHINGTON/53;,citation_publisher=https://www2.census.gov/geo/tiger/TIGER2020PL/STATE/53_WASHINGTON/53/tl_2020_53_tract20;">
+<meta name="citation_reference" content="citation_title=Index of /geo/tiger/TIGER2020/UAC;,citation_publisher=https://www2.census.gov/geo/tiger/TIGER2020/UAC/;">
+<meta name="citation_reference" content="citation_title=Index of /geo/tiger/TIGER2020PL/STATE/53_WASHINGTON/53;,citation_publisher=https://www2.census.gov/geo/tiger/TIGER2020PL/STATE/53_WASHINGTON/53/;">
+<meta name="citation_reference" content="citation_title=Index of /geo/tiger/TIGER2022/ZCTA520;,citation_publisher=https://www2.census.gov/geo/tiger/TIGER2022/ZCTA520/;">
+<meta name="citation_reference" content="citation_title=PROFILE OF GENERAL POPULATION AND HOUSING CHARACTERISTICS;,citation_author=U. S. Census Bureau;,citation_fulltext_html_url=https://data.census.gov/table/DECENNIALDP2020.DP1?t=Populations;,citation_publisher=U.S. Census Bureau;">
+<meta name="citation_reference" content="citation_title=Median income in the past 12 months (in 2022 inflation-adjusted dollars);,citation_author=U. S. Census Bureau;,citation_fulltext_html_url=https://data.census.gov/table/ACSST5Y2022.S1903?q=income WA&amp;amp;amp;g=040XX00US53$1400000&amp;y=2022;,citation_publisher=U.S. Census Bureau;">
+<meta name="citation_reference" content="citation_title=Tracking global data on electric vehicles;,citation_author=Hannah Ritchie;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_journal_title=Our World in Data;">
+<meta name="citation_reference" content="citation_title=Electric Vehicle Charging Infrastructure in the U.S.;,citation_abstract=64% of Americans live within 2 miles of a public electric vehicle charging station, and those who live closest to chargers view EVs more positively.;,citation_author=Samuel Bestvater and Sono Shah;,citation_publication_date=2024-05;,citation_cover_date=2024-05;,citation_year=2024;,citation_fulltext_html_url=https://www.pewresearch.org/data-labs/2024/05/23/electric-vehicle-charging-infrastructure-in-the-u-s/;,citation_language=en-US;,citation_journal_title=Pew Research Center;">
+<meta name="citation_reference" content="citation_title=About 3 in 10 Americans would seriously consider buying an electric vehicle;,citation_abstract=The share of Americans who say electric vehicles are better for the environment than gas vehicles has decreased 20 points since 2021, from 67%.;,citation_author=Alec Tyson and Emma Kikuchi;,citation_publication_date=2024-06;,citation_cover_date=2024-06;,citation_year=2024;,citation_fulltext_html_url=https://www.pewresearch.org/short-reads/2024/06/27/about-3-in-10-americans-would-seriously-consider-buying-an-electric-vehicle/;,citation_language=en-US;,citation_journal_title=Pew Research Center;">
+<meta name="citation_reference" content="citation_title=Tracking global data on electric vehicles;,citation_author=Hannah Ritchie;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_journal_title=Our World in Data;">
+<meta name="citation_reference" content="citation_title=Electric Vehicle Charging Infrastructure in the U.S.;,citation_abstract=64% of Americans live within 2 miles of a public electric vehicle charging station, and those who live closest to chargers view EVs more positively.;,citation_author=Samuel Bestvater and Sono Shah;,citation_publication_date=2024-05;,citation_cover_date=2024-05;,citation_year=2024;,citation_fulltext_html_url=https://www.pewresearch.org/data-labs/2024/05/23/electric-vehicle-charging-infrastructure-in-the-u-s/;,citation_language=en-US;,citation_journal_title=Pew Research Center;">
+<meta name="citation_reference" content="citation_title=Global EV Outlook 2023 – Analysis;,citation_abstract=Global EV Outlook 2023 - Analysis and key findings. A report by the International Energy Agency.;,citation_publication_date=2023-04;,citation_cover_date=2023-04;,citation_year=2023;,citation_language=en-GB;,citation_journal_title=IEA;,citation_publisher=https://www.iea.org/reports/global-ev-outlook-2023;">
+<meta name="citation_reference" content="citation_title=Electric Vehicle Charging Infrastructure in the U.S.;,citation_abstract=64% of Americans live within 2 miles of a public electric vehicle charging station, and those who live closest to chargers view EVs more positively.;,citation_author=Samuel Bestvater and Sono Shah;,citation_publication_date=2024-05;,citation_cover_date=2024-05;,citation_year=2024;,citation_fulltext_html_url=https://www.pewresearch.org/data-labs/2024/05/23/electric-vehicle-charging-infrastructure-in-the-u-s/;,citation_language=en-US;,citation_journal_title=Pew Research Center;">
+<meta name="citation_reference" content="citation_title=Alternative Fuels Data Center: Charging Electric Vehicles at Home;,citation_language=en-US;,citation_publisher=https://afdc.energy.gov/fuels/electricity-charging-home;">
+<meta name="citation_reference" content="citation_title=Alternative Fuels Data Center: Vehicle Registration Counts by State;,citation_language=en-US;,citation_publisher=https://afdc.energy.gov/vehicle-registration;">
+<meta name="citation_reference" content="citation_title=EV sales have soared in WA; our map shows where they’re registered;,citation_abstract=Washingtonians are among the country’s early adopters of electric vehicles.;,citation_publication_date=2023-10;,citation_cover_date=2023-10;,citation_year=2023;,citation_language=en-US;,citation_journal_title=The Seattle Times;,citation_publisher=https://www.seattletimes.com/seattle-news/environment/ev-sales-have-soared-in-wa-our-map-shows-where-theyre-registered/;">
+<meta name="citation_reference" content="citation_title=Metropolitan and Micropolitan Statistical Areas Population Totals: 2020-2023;,citation_abstract=This page features metropolitan and micropolitan statistical area population estimates totals for years 2020-2023.;,citation_author=US Census Bureau;,citation_language=en-US;,citation_journal_title=Census.gov;,citation_publisher=https://www.census.gov/data/tables/time-series/demo/popest/2020s-total-metro-and-micro-statistical-areas.html;">
+<meta name="citation_reference" content="citation_title=Analyzing Geospatial Data in R (Sherrie Xie);,citation_abstract=Creative Commons Attribution license (reuse allowed);,citation_author=R Consortium;,citation_publication_date=2022-08;,citation_cover_date=2022-08;,citation_year=2022;">
+<meta name="citation_reference" content="citation_title=Week 6a: LISA and local moran (Introduction to Spatial Data Science);,citation_abstract=Recorded lecture by Luc Anselin at the University of Chicago (Fall 2020).;,citation_author=GeoDa Software;,citation_publication_date=2021-03;,citation_cover_date=2021-03;,citation_year=2021;">
+<meta name="citation_reference" content="citation_title=Spatial point patterns: Methodology and applications with r;,citation_author=Adrian Baddeley;,citation_author=Ege Rubak;,citation_author=Rolf Turner;,citation_publication_date=2015;,citation_cover_date=2015;,citation_year=2015;">
+</head>
+
+<body>
+
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Spatial Pattern of Electric Vehicle Population in State of Washington</h1>
+            <p class="subtitle lead">DSAN 6750 / PPOL 6805: GIS for Spatial Data Science</p>
+          </div>
+
+    
+    <div class="quarto-title-meta-container">
+      <div class="quarto-title-meta-column-start">
+            <div class="quarto-title-meta-author">
+          <div class="quarto-title-meta-heading">Author</div>
+          <div class="quarto-title-meta-heading">Affiliation</div>
+          
+                <div class="quarto-title-meta-contents">
+            <p class="author">Christy Hsu </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Georgetown University
+                      </p>
+                  </div>
+                    </div>
+        
+        <div class="quarto-title-meta">
+
+                      
+          
+                
+              </div>
+      </div>
+      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+      <div class="quarto-alternate-formats"><div class="quarto-title-meta-heading">Other Formats</div><div class="quarto-title-meta-contents"><p><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF</a></p></div><div class="quarto-title-meta-contents"><p><a href="index-meca.zip" data-meca-link="true"><i class="bi bi-archive"></i>MECA Bundle</a></p></div></div></div>
+    </div>
+
+
+
+    <div class="quarto-other-links-text-target">
+    </div>  </div>
+</header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a>
+  <ul class="collapse">
+  <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set up</a></li>
+  </ul></li>
+  <li><a href="#initial-evidence" id="toc-initial-evidence" class="nav-link" data-scroll-target="#initial-evidence">Initial Evidence</a>
+  <ul class="collapse">
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a></li>
+  <li><a href="#spatial-autocorrelation" id="toc-spatial-autocorrelation" class="nav-link" data-scroll-target="#spatial-autocorrelation">Spatial Autocorrelation</a></li>
+  </ul></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">Hypothesis Testing</a>
+  <ul class="collapse">
+  <li><a href="#first-order-properties-of-point-process" id="toc-first-order-properties-of-point-process" class="nav-link" data-scroll-target="#first-order-properties-of-point-process">First order properties of point process</a></li>
+  </ul></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="index-preview.html"><i class="bi bi-journal-code"></i>Article Notebook</a></li></ul></div></nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+  
+
+
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Intro</h2>
+<p>This project attempts to provide insights into the spatial pattern of EV adoptionusing approaches from spatial data science.</p>
+<p>The Electric Vehicle Population Data provided by Washington State Department of Licensing is the main dataset used in this project.<span class="citation" data-cites="ElectricVehiclePopulation">(<a href="#ref-ElectricVehiclePopulation" role="doc-biblioref"><span>“Electric <span>Vehicle Population Data</span> <span></span> <span>Data</span>.<span>WA</span> <span></span> <span>State</span> of <span>Washington</span>”</span> 2024</a>)</span></p>
+<p>Two main sections in this project cover:</p>
+<p>Initial Evidence</p>
+<ul>
+<li>Visualization</li>
+<li>Global Moran’s I</li>
+<li>Local Moran’s I</li>
+</ul>
+<p>Hypothesis Testing</p>
+<ul>
+<li>Intensity Function</li>
+<li>Relative Intensity Surface</li>
+<li>Monte Carlo Simulation</li>
+</ul>
+<section id="set-up" class="level3">
+<h3 class="anchored" data-anchor-id="set-up">Set up</h3>
+<section id="packages" class="level4">
+<h4 class="anchored" data-anchor-id="packages">packages</h4>
+</section>
+<section id="loading-files" class="level4">
+<h4 class="anchored" data-anchor-id="loading-files">loading files</h4>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `ev1203' from data source 
+  `/Users/toyuan/24-manuscript/data/ev1203.gpkg' using driver `GPKG'
+Simple feature collection with 208002 features and 25 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: -124.6274 ymin: 45.596 xmax: -117.0455 ymax: 48.99205
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `wa_poly' from data source 
+  `/Users/toyuan/24-manuscript/data/wa_poly.gpkg' using driver `GPKG'
+Simple feature collection with 1 feature and 14 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: -124.849 ymin: 45.54354 xmax: -116.9161 ymax: 49.00244
+Geodetic CRS:  NAD83</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `urban_shape' from data source 
+  `/Users/toyuan/24-manuscript/data/urban_shape.gpkg' using driver `GPKG'
+Simple feature collection with 56 features and 12 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -124.1802 ymin: 45.78668 xmax: -117.0418 ymax: 49.0021
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `stations' from data source 
+  `/Users/toyuan/24-manuscript/data/stations.gpkg' using driver `GPKG'
+Simple feature collection with 2800 features and 1 field
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: -124.6629 ymin: 25.91606 xmax: -73.98274 ymax: 48.99526
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `ct1202' from data source 
+  `/Users/toyuan/24-manuscript/data/ct1202.gpkg' using driver `GPKG'
+Simple feature collection with 1784 features and 19 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -124.849 ymin: 45.54354 xmax: -116.9161 ymax: 49.00244
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `ev1202-3' from data source 
+  `/Users/toyuan/24-manuscript/data/ev1202-3.gpkg' using driver `GPKG'
+Simple feature collection with 208002 features and 24 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: -124.6274 ymin: 45.596 xmax: -117.0455 ymax: 48.99205
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `zcta-tl' from data source 
+  `/Users/toyuan/24-manuscript/data/zcta-tl.gpkg' using driver `GPKG'
+Simple feature collection with 605 features and 12 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -124.7365 ymin: 45.54354 xmax: -116.9161 ymax: 49.00244
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `nov-ev' from data source 
+  `/Users/toyuan/24-manuscript/data/nov-ev.gpkg' using driver `GPKG'
+Simple feature collection with 17025 features and 15 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: -124.6274 ymin: 30.41628 xmax: -71.06739 ymax: 48.99976
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<a class="quarto-notebook-link" id="nblink-1" href="index-preview.html">Source: Article Notebook</a></div>
+</section>
+<section id="functions" class="level4">
+<h4 class="anchored" data-anchor-id="functions">Functions</h4>
+<p>function <code>to_3857</code> <code>to_4326</code> for CRS transform</p>
+<p>function <code>sf_to_ppp</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>function <code>relative_int</code></p>
+</section>
+</section>
+</section>
+<section id="initial-evidence" class="level2">
+<h2 class="anchored" data-anchor-id="initial-evidence">Initial Evidence</h2>
+<p>This exploratory section approaches EV population in WA as a point pattern, efforts are made to convince that EV adoption is interesting not only as an event but also as a spatial phenomenon. Our approaches includes: landing descriptions of our data, map visualizations and spatial autocorrelation measures.</p>
+<section id="visualization" class="level3">
+<h3 class="anchored" data-anchor-id="visualization">Visualization</h3>
+<p>Before presenting our evidence of clustering in the spatial pattern of EVs, we would like to start with some clarification about the “points” and their locations in our data. Each observation in the dataset represents an EV with its unique DOL id. However, the longitude and latitude information corresponds to the centroid of that Zip Code Tabulation Area associated with the recorded address of the EV owner. Thus, 208,002 distinct EVs are matched to only 548 distinct points.</p>
+<p><code>ev_counts</code></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 548</code></pre>
+</div>
+</div>
+<p>From the frequency table of counties, we can see that EV population exists across all counties in WA. When plotting EV count per county as a statistic, a skewed distribution gives us the first evidence of the variance in EV adoption counts across regional divisions.</p>
+<p>With map visualization of the EV locations and counts in Washington, an impression we might have is that EV adoption as an event does not seem to be constant between locations. Furthermore, when looking at the map, we might suggest detecting clusters in specific locations and, for example, identifying these clusters with the three of the main metropolitan areas that the state overlaps.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a><span class="citation" data-cites="bureauMetropolitanMicropolitanStatistical">(<a href="#ref-bureauMetropolitanMicropolitanStatistical" role="doc-biblioref">Bureau n.d.</a>)</span></p>
+<p>The Seattle-Tacoma-Bellevue Metropolitan area in the northwest; a mid-western cluster corresponding to Spokane-Spokane Valley Metropolitan area; and another approximately in Clark county, with Vancouver city to take part of the cross-states Portland-Vancouver-Hillsboro Metropolitan area.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>urb_map <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> ct_sf, <span class="at">fill =</span> <span class="st">"lightgray"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> ev_sf, <span class="fu">aes</span>(<span class="at">size =</span> count), <span class="at">color =</span> <span class="st">'cornflowerblue'</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> urban_poly, <span class="fu">aes</span>(<span class="at">fill =</span> <span class="st">"Urban Areas"</span>), <span class="at">color =</span> <span class="st">"pink"</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size_continuous</span>(<span class="at">name =</span> <span class="st">"EV Registrations"</span>, <span class="at">range =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">12</span>)) <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">"Legend"</span>, <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Urban Areas"</span> <span class="ot">=</span> <span class="st">"pink"</span>)) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution of EV registrations in WA"</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"urban areas"</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">12</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ggsave("image/manu-urb-ev.png", plot = urb_map)</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>urb_map</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>At this stage, we are led to understand the concentration of EV registrations at certain areas, or the attribute similarity of EV counts and their spatial similarity, by suggesting relationships between EV adoption, urban areas and population.</p>
+<p><a href="image/manu-urb-ev.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="image/manu-urb-ev.png" class="img-fluid"></a></p>
+<p>Using the definition provided by US Census Bureau, we can assign urban or rural labels to each registration. We learn from this classification that 180,490 registrations took place in urban areas, leaving 27,512 in rural areas. This spatial unevenness is evident when we impose the polygons of urban areas onto the EV population distribution.</p>
+</section>
+<section id="spatial-autocorrelation" class="level3">
+<h3 class="anchored" data-anchor-id="spatial-autocorrelation">Spatial Autocorrelation</h3>
+<p>Aside from descriptive statistics and mapping, if we seek a more analytical language for communicating our EDA insights, one common approach is to measure spatial autocorrelation for our data.</p>
+<section id="global-morans-i-clustering-of-ev-registrations" class="level4">
+<h4 class="anchored" data-anchor-id="global-morans-i-clustering-of-ev-registrations">Global moran’s I: Clustering of EV registrations</h4>
+<p>Firstly, we are interested in measuring the autocorrelation of the whole mapped pattern. The way we determine whether our observed point pattern stands out, is to make comparison with the pattern out of complete spatial randomness. The Global Moran’s I statistic offers us a way to measures the autocorrelation of the entire observations.</p>
+<p>To estimate the autocorrelation value for our observations using Moran’s I formula, we have to specify our statistic of interest, choose a neighbor definition, prepare a neighborhood relation and assign weights to neighbors.</p>
+<p>function <code>compute_moran</code></p>
+<p>We tried two ways to use <code>spdep::moran</code> for calculating Global Moran’s I. The step we take her is to aggregate observed points into polygons, ZIP Code Tabulation Areas which contain 605 polygons, and Census Tracts of 1784 polygons, are two targets of aggregation.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> When constructing the neighborhood relationships, both Rook and Queen defintions of neighbors are tried, and we used the default setting to assign equal weight to all neighbors. Both attempts are to result in a postive autocorrelation of our observations, pointing us in the direction of non-random spatial clustering.</p>
+<p>However, the positivity of this autocorrelation value is not that fruitful on its own. For us to reject CSR or to make sense of the significance of our observed Moran’s I statistic, we further did a permutation test using <code>spdep::moran.mc()</code> and obtained a pseudo p-value of 0.001. Since this is the most extreme value we can get in the case of 999 Monte Carlo Simulations, the likelihood that we reject CSR while CSR is true is a low one. Given a positive and significant global moran’s I, we can say that our observe point pattern differs significantly from a random point pattern in the direction of clustering.<span class="citation" data-cites="rconsortiumAnalyzingGeospatialData2022">(<a href="#ref-rconsortiumAnalyzingGeospatialData2022" role="doc-biblioref">R Consortium 2022</a>)</span></p>
+<section id="morans-i-using-zctas-as-bounding-polygons-and-queen-definition-of-neighbors" class="level5">
+<h5 class="anchored" data-anchor-id="morans-i-using-zctas-as-bounding-polygons-and-queen-definition-of-neighbors">Moran’s I using ZCTAs as bounding polygons and Queen Definition of Neighbors</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6457255</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Monte-Carlo simulation of Moran I
+
+data:  zcta_sf$n_ev 
+weights: zcta_listw  
+number of simulations + 1: 1000 
+
+statistic = 0.64146, observed rank = 1000, p-value = 0.001
+alternative hypothesis: greater</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-13-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="morans-i-using-census-tracts-as-bounding-polygons-and-rook-definition-of-neighbors" class="level5">
+<h5 class="anchored" data-anchor-id="morans-i-using-census-tracts-as-bounding-polygons-and-rook-definition-of-neighbors">Moran’s I using Census Tracts as bounding polygons and Rook definition of neighbors</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 208002</code></pre>
+</div>
+</div>
+<p>Moran’s I value</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5136527</code></pre>
+</div>
+</div>
+</section>
+<section id="visualize-neiborhood-relation" class="level5">
+<h5 class="anchored" data-anchor-id="visualize-neiborhood-relation">visualize neiborhood relation</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Monte-Carlo simulation of Moran I
+
+data:  ct_sf$n_ev 
+weights: ct_listw  
+number of simulations + 1: 1000 
+
+statistic = 0.51365, observed rank = 1000, p-value = 0.001
+alternative hypothesis: greater</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-19-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="local-morans-i-detecting-clusters" class="level4">
+<h4 class="anchored" data-anchor-id="local-morans-i-detecting-clusters">Local Moran’s I: detecting clusters</h4>
+<p>With evidence of clustering globally, we also want information about where we can find the clusters. In this case, <code>spdep::localmoran</code> can help use with a Moran’s I statistic for each census tract.<span class="citation" data-cites="geodasoftwareWeek6aLISA2021">(<a href="#ref-geodasoftwareWeek6aLISA2021" role="doc-biblioref">GeoDa Software 2021</a>)</span></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "localmoran" "matrix"     "array"     </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1784    5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1784   26</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-2.28334  0.03044  0.19644  0.51365  0.46033 26.79675 </code></pre>
+</div>
+</div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ev_ct_local <span class="ot">&lt;-</span> ct_sf7 <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span> <span class="fu">as.numeric</span>(local_i))) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Local moran's I by Census Tracts"</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"local_i"</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low=</span><span class="st">"darkblue"</span>, <span class="at">high=</span><span class="st">"red"</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">transform =</span> <span class="st">"pseudo_log"</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># +</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">na.value =</span> <span class="st">"gray"</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ggsave('image/ct_localmoran.png', ev_ct_local)</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>ev_ct_local</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="image/ct_localmoran.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="image/ct_localmoran.png" class="img-fluid"></a></p>
+<p>Local Moran’s I significance map</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ev_ct_local_p <span class="ot">&lt;-</span> ct_sf7 <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span> <span class="fu">as.numeric</span>(local_p))) <span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Local moran's I by Census Tracts"</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"local_p"</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low=</span><span class="st">"darkred"</span>, <span class="at">high=</span><span class="st">"blue"</span>, <span class="at">midpoint=</span><span class="fl">0.1</span>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># +</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">na.value =</span> <span class="st">"gray"</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ggsave('image/ct_localmoran_p.png', ev_ct_local_p)</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>ev_ct_local_p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="image/ct_localmoran_p.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="image/ct_localmoran_p.png" class="img-fluid"></a></p>
+<section id="local-moran-permutation-test" class="level5">
+<h5 class="anchored" data-anchor-id="local-moran-permutation-test">local moran permutation test</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "localmoran" "matrix"     "array"     </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1784    9</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>           Ii          E.Ii       Var.Ii       Z.Ii Pr(z != E(Ii))
+1 -0.19651842 -0.0031906570 6.079843e-02 -0.7840577      0.4330062
+2  0.00244076  0.0005481923 6.916542e-05  0.2275657      0.8199839
+  Pr(z != E(Ii)) Sim Pr(folded) Sim  Skewness Kurtosis
+1              0.406          0.203  2.272828 12.18684
+2              0.934          0.467 -2.498880 18.68960</code></pre>
+</div>
+</div>
+<p>From the conditional permutation test, we can plot local significance map and specify different types of associations. The table below is a count table for a Moran scatter plot, we can see that among 521 census tracts with significant pseudo p-values 306 census tracts exhibit Low-Low associations, 205 census tracts for High-High associations.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  Low-Low  High-Low  Low-High High-High      &lt;NA&gt; 
+      306         8        15       205      1250 </code></pre>
+</div>
+</div>
+<p>LISA Cluster Map</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>local_perm_map <span class="ot">&lt;-</span> ct_sf7 <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> scatter)) <span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"LISA Cluster Map"</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="st">"locations"</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'High-High'</span> <span class="ot">=</span> <span class="st">'red'</span>,</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'High-Low'</span> <span class="ot">=</span> <span class="st">'pink'</span>,</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Low-High'</span> <span class="ot">=</span> <span class="st">'lightblue'</span>,</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Low-Low'</span> <span class="ot">=</span> <span class="st">'blue'</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.value =</span> <span class="st">'white'</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>local_perm_map</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ggsave('image/manu-lisa-cluster.png', local_perm_map)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="image/manu-lisa-cluster.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="image/manu-lisa-cluster.png" class="img-fluid"></a></p>
+<p>Local Moran’s I, pseudo p-values from conditional permutation test, and identification of the association types for the significant census tracts, take us to a more in depth understanding of our EV point pattern. Insight into the hotspots and coldspots of EV adoption, corresponding to High-High census tracts and Low-Low census tracts is especially helpful because we are inclined to see the hotspots but ignore the coldspots. The LISA Cluster Map reveals to us the clusters centered census tracts with low EV population itself and also surrounded by neighbors with low EV population, this finding is hardly possible to get if we only have the positive cases, or already EV owning househols to visualize. One important aspect of interpreting positive spatial autocorrelation is demonstrated here, we need to think of the bigger picture of clustering as the contribution of attribute, in our case EV count similarity and locational similarity, thus, we won’t ignore clusters that have similar low EV counts also have a role to play in this picture.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="hypothesis-testing" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-testing">Hypothesis Testing</h2>
+<p>This section attempts to deal with another aspect we need to account for when acquiring a positive and significant global autocorrelation value for our point pattern of interest. In our case, we want to evaluate how the spatial inhomogeneity of the Washington state can explain for our initial evidence of clustering.</p>
+<p>We want to understand the first-order properties of EV adoption pattern with the awareness of the underlying landscape of the state they have an effect on the adoption potential of different locations. We can take a look at our EV population distribution together with the human population distribution in WA. They appeared to follow very similar distribution, and we do recognize that the core of the definition of an urban area is the spatial distribution of population.</p>
+<p>Thus, it will be helpful to set aside other characteristics we associate with the urban label at the time, examine the relationship between the two populations in WA. We expect a better understanding of this relationship can guide us to explore to which extent that the EV counts variations across locations can be explained by the population count variations, and how population distribution as a explanation can have different degrees of effectiveness from one region to another.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>distribution_map <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> ct_sf, <span class="at">fill =</span> <span class="st">"lightgray"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> ev_sf,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">size =</span> count,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> cb_palette[<span class="dv">5</span>]),</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_size_continuous</span>(<span class="at">name =</span> <span class="st">"EV Registrations"</span>, <span class="at">range =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="dv">15</span>)) <span class="sc">+</span> </span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution of ZEVs in WA"</span>,</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Cumulative data to October 31, 2024"</span>,</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"longitude"</span>,</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"latitude"</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">11</span>)</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="st">"none"</span>)</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"image/manu-ev-distribution.png"</span>, <span class="at">plot =</span> distribution_map)</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>distribution_map</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="image/manu-ev-distribution.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="image/manu-ev-distribution.png" class="img-fluid"></a></p>
+<p>NASA GPW data provides us a glimpse of disaggregated human population data, modeling a human population count for each 1 km^2 grid. We can take it conveniently as a way to make sense of what population point pattern can look like.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a><span class="citation" data-cites="ciesin2018gpw">(<a href="#ref-ciesin2018gpw" role="doc-biblioref">International Earth Science Information Network (CIESIN) - Columbia University 2018</a>)</span></p>
+<p><code>gpw_raster</code></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>class      : RasterLayer 
+dimensions : 416, 955, 397280  (nrow, ncol, ncell)
+resolution : 0.008333333, 0.008333333  (x, y)
+extent     : -124.8667, -116.9083, 45.54167, 49.00833  (xmin, xmax, ymin, ymax)
+crs        : +proj=longlat +datum=WGS84 +no_defs 
+source     : gpw-popcount.tif 
+names      : gpw.popcount </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 304514      2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+   0.000    0.000    0.144   24.585    1.504 7425.167 </code></pre>
+</div>
+</div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>gpw_map <span class="ot">&lt;-</span> popcount_sf <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> pop)) <span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">color =</span> scales<span class="sc">::</span><span class="fu">alpha</span>(<span class="st">"white"</span>,<span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">trans =</span> <span class="st">'pseudo_log'</span>) <span class="sc">+</span> </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Population Counts in WA"</span>,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">'GPW V.4 2020-07-01'</span>,</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Population Count"</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> </span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>),</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">'image/manu-gpw-raster.png'</span>, <span class="at">plot =</span> gpw_map)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>gpw_map</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>un_map <span class="ot">&lt;-</span> popcount_sf <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> pop)) <span class="sc">+</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span> </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis</span>(<span class="at">option =</span> <span class="st">'C'</span>, <span class="at">trans =</span> <span class="st">'pseudo_log'</span>) <span class="sc">+</span> </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Population Count'</span>,</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">'GPW V.4 2020-07-01'</span>,</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">'Population Count'</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">'image/manu-gpw-0701.png'</span>, <span class="at">plot =</span> un_map)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>un_map</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="image/manu-gpw-0701.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="image/manu-gpw-0701.png" class="img-fluid"></a></p>
+<p>Our null hypothesis is: the observed EV point pattern can be directly explained by the population distribution of WA. In other words, people in WA have equal chance to adopt EV regardless of where they live, rural or urban and also regardless of whether their neighbors own EVs or not.</p>
+<section id="first-order-properties-of-point-process" class="level3">
+<h3 class="anchored" data-anchor-id="first-order-properties-of-point-process">First order properties of point process</h3>
+<section id="intensity-function" class="level4">
+<h4 class="anchored" data-anchor-id="intensity-function">Intensity Function</h4>
+<p>One important limitation of this analysis that needs to be addressed is that we use the WA state boundaries as our observation window. The drawback of this choice is quite obvious: among the three major metropolitan areas in WA, two are situated at the borders of the state – one with Oregon and the other with Idaho. This can lead to underestimations, as they can have less neighbors as the result of this bounding box.</p>
+<p>Intensity function we are interested here is the count of event: count of EVs and count of people in an area</p>
+<p>Constructing the <code>ppp</code> object for estimating EV population intensity is a more straightforward one, we use the 548 distinct points and marked them with EV registration counts. When it comes to finding an appropriate way to estimate human population intensity, since ZCTAs are not a typical statistical division of US Census Bureau, thus, one way to approach this problem is to use the data of population counts by census tract and use the centroids of the census tracts to construct <code>ppp</code> object. Another way we explored is to take the 605 centroids of ZCTAs and request points estimate of population counts also from NASA APPEEARs.<span class="citation" data-cites="ciesin2018gpw">(<a href="#ref-ciesin2018gpw" role="doc-biblioref">International Earth Science Information Network (CIESIN) - Columbia University 2018</a>)</span></p>
+<p>With these ppps at hand <code>spatstat::density()</code> can handle these marked ppp and estimate us the intensity function accounting the marks as weights.</p>
+<section id="zev_ppp" class="level5">
+<h5 class="anchored" data-anchor-id="zev_ppp"><code>zev_ppp</code></h5>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-34-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="index_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 70971.96</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.490786e-07</code></pre>
+</div>
+</div>
+</section>
+<section id="pop_int" class="level5">
+<h5 class="anchored" data-anchor-id="pop_int"><code>pop_int</code></h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7705281</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-38-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="index_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># png('image/manu-ct-ratio.png', width = 750, height = 500)</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">relative_int</span>(zev_ppp, pop_ppp)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dev.off()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="image/manu-ct-ratio.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="image/manu-ct-ratio.png" class="img-fluid"></a></p>
+<p>With these ppps at hand <code>spatstat::density()</code> can handle these marked ppp and estimate us the intensity function accounting the marks as weights.</p>
+</section>
+<section id="gpw_ppp" class="level5">
+<h5 class="anchored" data-anchor-id="gpw_ppp"><code>gpw_ppp</code></h5>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-42-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="index_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 308385.8</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-44-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="index_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># png('image/manu-zpts-ratio.png', width = 750, height = 500)</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">relative_int</span>(zev_ppp, gpw_ppp)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dev.off()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="image/manu-zpts-ratio.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="image/manu-zpts-ratio.png" class="img-fluid"></a></p>
+</section>
+</section>
+<section id="relative-intensity-surface" class="level4">
+<h4 class="anchored" data-anchor-id="relative-intensity-surface">Relative Intensity Surface</h4>
+<p>We use the optimal bandwidths given by spatstat and make adjustments to calculate intensity ratios between our case point pattern to the base rate point pattern. By eliminating the effect of the human population intensity of WA, the relative intensity surface plots still exhibit uneven ratio from location to location suggesting us that point pattern of EV population is a special one.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+</section>
+<section id="monte-carlo-simulation" class="level4">
+<h4 class="anchored" data-anchor-id="monte-carlo-simulation">Monte Carlo Simulation</h4>
+<p>We deploy quadrat count to understand how intensity varies from dividing the state in to equal regions of “Low”, “Medium” and “High” population. Two intensity functions constructed by Census tract level population count and GPW population count are used as the null point process in the Monte Carlo simulation.</p>
+<section id="divide-regions-for-quadrat-count" class="level5">
+<h5 class="anchored" data-anchor-id="divide-regions-for-quadrat-count">divide regions for quadrat count</h5>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-45-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="index_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="computational-approach-999-simulations" class="level5">
+<h5 class="anchored" data-anchor-id="computational-approach-999-simulations">computational approach: 999 simulations</h5>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">6805</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>gen_sims_ppp <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">num_sims =</span> <span class="dv">999</span>) {</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  ev_sims <span class="ot">&lt;-</span> spatstat.random<span class="sc">::</span><span class="fu">rpoint</span>(</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">nrow</span>(ev_sf),</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">f =</span> pop_int,</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">nsim =</span> num_sims</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ev_sims)</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>n_sims <span class="ot">&lt;-</span> <span class="dv">999</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>ev_sims_list <span class="ot">&lt;-</span> <span class="fu">gen_sims_ppp</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="calculate-test-statistic-from-observations" class="level5">
+<h5 class="anchored" data-anchor-id="calculate-test-statistic-from-observations">calculate test statistic from observations</h5>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>   Low Medium   High 
+  1644   9001 197357 </code></pre>
+</div>
+</div>
+</section>
+<section id="calculate-test-statistic-from-simulations" class="level5">
+<h5 class="anchored" data-anchor-id="calculate-test-statistic-from-simulations">calculate test statistic from simulations</h5>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>sims_region_counts <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">X =</span> ev_sims_list,</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> compute_quadrat_counts</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>sim_counts_df <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(sims_region_counts) <span class="sc">|&gt;</span> <span class="fu">t</span>() <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sim_counts_df) <span class="ot">&lt;-</span> region_labels</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>sim_counts_df <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>bind_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sim_counts_df, obs_counts)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>bind_df <span class="sc">|&gt;</span> <span class="fu">dim</span>()</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>bind_df <span class="sc">|&gt;</span> <span class="fu">write_csv</span>(<span class="st">'data/manu-simulations.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-49-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="index_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>mc_sim <span class="ot">&lt;-</span> <span class="cf">function</span>(im,fpath1, fpath2, <span class="at">num_sims =</span> <span class="dv">999</span>){</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  n_regions <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  region_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Low"</span>, <span class="st">"Medium"</span>, <span class="st">"High"</span>)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  int_vals <span class="ot">&lt;-</span> im</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  int_quant <span class="ot">&lt;-</span> <span class="fu">quantile</span>(int_vals,<span class="at">probs =</span> ((<span class="dv">0</span><span class="sc">:</span>n_regions) <span class="sc">/</span> n_regions), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  int_cut <span class="ot">&lt;-</span> <span class="fu">cut</span>(int_vals, <span class="at">breaks =</span> int_quant, <span class="at">labels =</span> region_labels)</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  int_areas <span class="ot">&lt;-</span> <span class="fu">tess</span>(<span class="at">image =</span> int_cut)</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(int_areas)</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">6805</span>)</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>  gen_sims_ppp <span class="ot">&lt;-</span> <span class="cf">function</span>(num_sims) {</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>    spatstat.random<span class="sc">::</span><span class="fu">rpoint</span>(</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">n =</span> <span class="fu">nrow</span>(ev_sf),</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">f =</span> im,</span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">nsim =</span> num_sims)</span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>  sims_list <span class="ot">&lt;-</span> <span class="fu">gen_sims_ppp</span>(num_sims)</span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>  compute_quadrat_counts <span class="ot">&lt;-</span> <span class="cf">function</span>(sim_ppp) {</span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>    counts <span class="ot">&lt;-</span> <span class="fu">quadratcount</span>(sim_ppp, <span class="at">tess =</span> int_areas) <span class="sc">|&gt;</span> <span class="fu">as.vector</span>()</span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>(counts) <span class="ot">&lt;-</span> region_labels</span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(counts)</span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a>  ev_ppp <span class="ot">&lt;-</span> <span class="fu">sf_to_ppp</span>(ev_sf)</span>
+<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a>  obs <span class="ot">&lt;-</span> <span class="fu">compute_quadrat_counts</span>(ev_ppp)</span>
+<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>  sims_region_counts <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
+<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">X =</span> ev_sims_list,</span>
+<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">FUN =</span> compute_quadrat_counts</span>
+<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a>  sim_counts_df <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(sims_region_counts) <span class="sc">|&gt;</span> <span class="fu">t</span>() <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb43-35"><a href="#cb43-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(sim_counts_df) <span class="ot">&lt;-</span> region_labels</span>
+<span id="cb43-36"><a href="#cb43-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-37"><a href="#cb43-37" aria-hidden="true" tabindex="-1"></a>  bind_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sim_counts_df, obs_counts)</span>
+<span id="cb43-38"><a href="#cb43-38" aria-hidden="true" tabindex="-1"></a>  bind_df <span class="sc">|&gt;</span> <span class="fu">write_csv</span>(fpath1)</span>
+<span id="cb43-39"><a href="#cb43-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-40"><a href="#cb43-40" aria-hidden="true" tabindex="-1"></a>  sims_plot <span class="ot">&lt;-</span> bind_df <span class="sc">|&gt;</span> </span>
+<span id="cb43-41"><a href="#cb43-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> High)) <span class="sc">+</span></span>
+<span id="cb43-42"><a href="#cb43-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">fill =</span> cb_palette[<span class="dv">2</span>], <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb43-43"><a href="#cb43-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(</span>
+<span id="cb43-44"><a href="#cb43-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">xintercept =</span> obs[<span class="st">'High'</span>],</span>
+<span id="cb43-45"><a href="#cb43-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">linetype =</span> <span class="st">"dashed"</span>,</span>
+<span id="cb43-46"><a href="#cb43-46" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> cb_palette[<span class="dv">1</span>]</span>
+<span id="cb43-47"><a href="#cb43-47" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">+</span> </span>
+<span id="cb43-48"><a href="#cb43-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span>
+<span id="cb43-49"><a href="#cb43-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-50"><a href="#cb43-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggsave</span>(fpath2, <span class="at">plot =</span> sims_plot, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">6</span>)</span>
+<span id="cb43-51"><a href="#cb43-51" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-52"><a href="#cb43-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sims_plot)</span>
+<span id="cb43-53"><a href="#cb43-53" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(gpw_int, <span class="st">'data/gpw-sims.csv'</span>, <span class="st">'image/gpw-distribution.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="image/gpw-distribution.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="image/gpw-distribution.png" class="img-fluid"></a></p>
+<p>The computational approach gives us an entire distribution of our statistics of interest, under the simulations of distributing 208002 EV registrations by human population point process. Given that the observed value lies on the far right tail of the distribution, the likelihood for us to observe 197,900 EV registrations in high population regions is a very low one. Therefore, we can believe that the null hypothesis is not likely to stand.</p>
+<p>The significance of our observed statistics in high population areas is more like a general picture that justifies our attentions to the spatial phenomenon of EVs, however, the findings from LISA Cluster Map from the relative intensity ratio do ask us to pay attention to local differences and how these local differences can contribute to the characteristics of the whole point pattern.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
+<p>With the evidence of clustering and after extracting the effect of population intensity, we have evidence to describe EV population point pattern in WA as a whole spatially clustering, and to think about the implications of this overall unevenness. At the same time, the local perspective offers insights into the relationship between attributes and locations in significant clusters.</p>
+<p>Knowing the adoption pattern and characteristics of those who already owns an EV might be a way of analyzing the issue of electric vehicle, if the aim of the issue is to anticipate a wider adoption and to eliminate the inequality, getting the glimpse of Low-Low clusters in many ways can be even more insightful. Another way to think of this issue is that of EV owning households today assumingly already have a positive view on EV and they made the decision of buying an EV rationally after evaluating their own living circumstances. Thus, to promote a more positive and decent view on electric vehicles and to prepare a more friendly environment that can support EV purchases, it is evident that more efforts should be made for the Low-Low clusters.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>One perspective confirmed by this project is that, it is actually not that hard to discover EV hotspots, we can find them generally in the urban areas or metro areas, though they may have different degrees of concentration. For example, the heart of Seattle Metro area, census tracts in King County out-performed both the CRS distribution and population distribution. In the case of Clark county and Spokane city, the results are less significant, however, may be due to the effect of the observation window. On the other hand, detecting coldspots requires many more steps, and we tend to underestimate the contribution of local Low-Low clusters to the global clusterness. But coldspots are indeed part of–and might be the essence of–the inequality behind the uneven spatial pattern of EV adoption.</p>
+<p>Most of the analysis in this project is at the exploratory stage. As the last section of the project, we are to think about where the EDA result can take us.</p>
+<p>Two of the main reason that people usually give for not considering an EV are: EVs are not affordable, and that EVs are not reliable in terms of the lack of access to charging equipment. <span class="citation" data-cites="kikuchi310Americans2024">(<a href="#ref-kikuchi310Americans2024" role="doc-biblioref">Kikuchi 2024</a>)</span></p>
+<p>Income and charging station accessibility, at a glance are both following spatial distributions similar toEV population and urban-rural divisions. Research on EVs has devoted much efforts carrying out the message that, with possible rebates to make the upfront cost of purchasing an EV less burdensome, EVs can, in the long term, save commuters more money than petro and diesel cars. As for the range anxiety, which is more expressed by potential EV owners than by actual EV owners, it is explained by that most recent EV owners charge their vehicles at home on daily bases. This implies that they have private parking spaces, can afford to install home charging equipment, and the electric range of their EVs is just sufficient for their daily commute distances. <span class="citation" data-cites="AlternativeFuelsDatag">(<a href="#ref-AlternativeFuelsDatag" role="doc-biblioref"><span>“Alternative <span>Fuels Data Center</span>: <span>Charging Electric Vehicles</span> at <span>Home</span>”</span> n.d.</a>)</span></p>
+<p>But these facts of today are not there to convince us that affordability and public charging infrastructure don’t really matter much in the decision of buying an EV. Instead, they can lead us to see that the diffusion of EVs at a stage where barriers between owners and potential owners are not only material but also in knowledge.</p>
+<p>Looking forward to the 2030 ZEV mandate, all newly sold vehicles electric, one solution is to make the most of EV charging station. An analysis by Pew Research Center offers an interesting way to think about public charging stations.<span class="citation" data-cites="shahElectricVehicleCharging2024">(<a href="#ref-shahElectricVehicleCharging2024" role="doc-biblioref">Shah 2024</a>)</span> Or, people need to see charging stations for they to develop confidence in EV before they really use them or even before people actually own an EV.</p>
+<p>Addressing the unevenness of adoption and the importance of the visibility of EV charging station in the EV diffusion process, can be seen in how Induction Reduction Act incentives target EV charging stations in rural areas, and in reseach exploring models to determine the optimal locations for EV charging station installations. <span class="citation" data-cites="trancik16potential">(<a href="#ref-trancik16potential" role="doc-biblioref">Needell et al. 2016</a>)</span></p>
+<p>The following note is an attempt to take the previous approaches, but this time analyzing the distribution of EV charging station. Some early findings from the relative intensity ratio of charging stations on EV registrations are that the charging station distribution is somewhat more even compared to the EV registrations.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Distribution of Public Charging Stations in WA">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Distribution of Public Charging Stations in WA
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>api_key <span class="op">=</span> AFDCKEY</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f'https://developer.nrel.gov/api/alt-fuel-stations/v1.csv?api_key=</span><span class="sc">{</span>api_key<span class="sc">}</span><span class="ss">&amp;fuel_type=ELEC&amp;state=WA&amp;access=public'</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>output_file <span class="op">=</span> <span class="st">'data/ev_charging_stations_wa.csv'</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url)</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(output_file, <span class="st">'wb'</span>) <span class="im">as</span> f:</span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>        f.write(response.content)</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>output_file<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"status code </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>response<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="image/manu-urb-stations.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="image/manu-urb-stations.png" class="img-fluid"></a></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `evse' from data source `/Users/toyuan/24-manuscript/data/evse.gpkg' using driver `GPKG'
+Simple feature collection with 2662 features and 6 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: -124.6629 ymin: 45.56257 xmax: -117.0435 ymax: 48.99526
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            geom          count      
+ POINT        :2647   Min.   :1.000  
+ epsg:4326    :   0   1st Qu.:1.000  
+ +proj=long...:   0   Median :1.000  
+                      Mean   :1.006  
+                      3rd Qu.:1.000  
+                      Max.   :2.000  </code></pre>
+</div>
+</div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>urb_station_map <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> ct_sf, <span class="at">fill =</span> <span class="st">"lightgray"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> wa_stations_sf, <span class="at">color =</span> cb_palette[<span class="dv">3</span>], <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">to_4326</span>(urban_poly), <span class="fu">aes</span>(<span class="at">fill =</span> <span class="st">"Urban Areas"</span>), <span class="at">color =</span> <span class="st">"pink"</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">"Legend"</span>, <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Urban Areas"</span> <span class="ot">=</span> <span class="st">"pink"</span>)) <span class="sc">+</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution of Public EV Charging Stations in WA"</span>,</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"urban areas"</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">12</span>)</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"image/manu-urb-stations.png"</span>, <span class="at">plot =</span> urb_station_map)</span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>urb_station_map</span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 4326</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-55-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="index_files/figure-html/unnamed-chunk-55-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>station_ppp</code></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2647</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-58-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="index_files/figure-html/unnamed-chunk-58-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">'image/manu-station-ratio.png'</span>, <span class="at">width =</span> <span class="dv">750</span>, <span class="at">height =</span> <span class="dv">500</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">relative_int</span>(station_ppp, zev_ppp)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="image/manu-station-ratio.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="image/manu-station-ratio.png" class="img-fluid"></a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-59-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="index_files/figure-html/unnamed-chunk-59-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">6805</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>evse_sims_ppp <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">num_sims =</span> <span class="dv">999</span>) {</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  evse_sims <span class="ot">&lt;-</span> spatstat.random<span class="sc">::</span><span class="fu">rpoint</span>(</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">nrow</span>(evse_sf),</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">f =</span> zev_int,</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">nsim =</span> num_sims</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(evse_sims)</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>n_sims <span class="ot">&lt;-</span> <span class="dv">999</span></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>evse_sims_list <span class="ot">&lt;-</span> <span class="fu">evse_sims_ppp</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>compute_quadrat_counts2 <span class="ot">&lt;-</span> <span class="cf">function</span>(sim_ppp) {</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  counts <span class="ot">&lt;-</span> <span class="fu">quadratcount</span>(sim_ppp, <span class="at">tess =</span> zev_areas) <span class="sc">|&gt;</span> <span class="fu">as.vector</span>()</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(counts) <span class="ot">&lt;-</span> region_labels</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(counts)</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>obs_evse <span class="ot">&lt;-</span> <span class="fu">compute_quadrat_counts2</span>(station_ppp)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>obs_evse</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>sim_evse_counts <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">X =</span> evse_sims_list,</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> compute_quadrat_counts2</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>sim_evse_df <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(sim_evse_counts) <span class="sc">|&gt;</span> <span class="fu">t</span>() <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sim_evse_df) <span class="ot">&lt;-</span> region_labels</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>sim_evse_df <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>bind_evse_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sim_evse_df, obs_evse)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>bind_evse_df <span class="sc">|&gt;</span> <span class="fu">dim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>evse_sim_plot <span class="ot">&lt;-</span> bind_evse_df <span class="sc">|&gt;</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Medium)) <span class="sc">+</span> </span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill=</span>cb_palette[<span class="dv">2</span>], <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> obs_evse[<span class="st">'Medium'</span>], <span class="at">linetype =</span> <span class="st">'dashed'</span>, <span class="at">color =</span> cb_palette[<span class="dv">1</span>]) <span class="sc">+</span> </span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>evse_sim_plot</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">'image/evse-sims-plot.png'</span>, evse_sim_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="image/evse-sims-plot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="image/evse-sims-plot.png" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+<p>For the interpretation of the interesting census tracts we find in the LISA cluster map, there is much to anticipate if domain knowledge of the state and locals is introduced.</p>
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-AlternativeFuelsDatag" class="csl-entry" role="listitem">
+<span>“Alternative <span>Fuels Data Center</span>: <span>Charging Electric Vehicles</span> at <span>Home</span>.”</span> n.d. https://afdc.energy.gov/fuels/electricity-charging-home. Accessed December 1, 2024.
+</div>
+<div id="ref-bureauMetropolitanMicropolitanStatistical" class="csl-entry" role="listitem">
+Bureau, US Census. n.d. <span>“Metropolitan and <span>Micropolitan Statistical Areas Population Totals</span>: 2020-2023.”</span> <em>Census.gov</em>. https://www.census.gov/data/tables/time-series/demo/popest/2020s-total-metro-and-micro-statistical-areas.html. Accessed December 10, 2024.
+</div>
+<div id="ref-ElectricVehiclePopulation" class="csl-entry" role="listitem">
+<span>“Electric <span>Vehicle Population Data</span> <span></span> <span>Data</span>.<span>WA</span> <span></span> <span>State</span> of <span>Washington</span>.”</span> 2024. https://data.wa.gov/Transportation/Electric-Vehicle-Population-Data/f6w7-q2d2/about_data; data.wa.gov.
+</div>
+<div id="ref-geodasoftwareWeek6aLISA2021" class="csl-entry" role="listitem">
+GeoDa Software. 2021. <span>“Week 6a: <span>LISA</span> and Local Moran (<span>Introduction</span> to <span>Spatial Data Science</span>).”</span>
+</div>
+<div id="ref-ciesin2018gpw" class="csl-entry" role="listitem">
+International Earth Science Information Network (CIESIN) - Columbia University, Center for. 2018. <span>“Gridded Population of the World, Version 4 (GPWv4): Population Count Adjusted to Match 2015 Revision of UN WPP Country Totals, Revision 11.”</span> Palisades, NY: NASA Socioeconomic Data; Applications Center (SEDAC). <a href="https://doi.org/10.7927/H4PN93PB">https://doi.org/10.7927/H4PN93PB</a>.
+</div>
+<div id="ref-kikuchi310Americans2024" class="csl-entry" role="listitem">
+Kikuchi, Alec Tyson and Emma. 2024. <span>“About 3 in 10 <span>Americans</span> Would Seriously Consider Buying an Electric Vehicle.”</span> <em>Pew Research Center</em>. <a href="https://www.pewresearch.org/short-reads/2024/06/27/about-3-in-10-americans-would-seriously-consider-buying-an-electric-vehicle/">https://www.pewresearch.org/short-reads/2024/06/27/about-3-in-10-americans-would-seriously-consider-buying-an-electric-vehicle/</a>.
+</div>
+<div id="ref-trancik16potential" class="csl-entry" role="listitem">
+Needell, Zachary A., James Mcnerney, Michael T. Chang, and Jessika E. Trancik. 2016. <span>“Potential for Widespread Electrification of Personal Vehicle Travel in the United States.”</span> <em>Nature Energy</em> 1 (August): 16112. <a href="https://proxy.library.georgetown.edu/login?url=https://www.proquest.com/scholarly-journals/potential-widespread-electrification-personal/docview/2218221398/se-2">https://proxy.library.georgetown.edu/login?url=https://www.proquest.com/scholarly-journals/potential-widespread-electrification-personal/docview/2218221398/se-2</a>.
+</div>
+<div id="ref-rconsortiumAnalyzingGeospatialData2022" class="csl-entry" role="listitem">
+R Consortium. 2022. <span>“Analyzing <span>Geospatial Data</span> in <span>R</span> (<span>Sherrie Xie</span>).”</span>
+</div>
+<div id="ref-shahElectricVehicleCharging2024" class="csl-entry" role="listitem">
+Shah, Samuel Bestvater and Sono. 2024. <span>“Electric <span>Vehicle Charging Infrastructure</span> in the <span>U</span>.<span>S</span>.”</span> <em>Pew Research Center</em>. <a href="https://www.pewresearch.org/data-labs/2024/05/23/electric-vehicle-charging-infrastructure-in-the-u-s/">https://www.pewresearch.org/data-labs/2024/05/23/electric-vehicle-charging-infrastructure-in-the-u-s/</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>to construct marked ppp, extra steps are needed<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Seattle-Tacoma-Bellevue (WA),Portland-Vancouver-Hillsboro (OR-WA), Spokane-Spokane Valley (WA) are the three metropolitan areas listed as the top 100 populous metro areas by the Census Bureau, ranking 15th, 25th and 96th respectively<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>The reason that I did not simply use ZCTAs is although the codebook describes the location variable as the center of postal code areas, but the provided longitude and latitude did not align well with the centroids of ZCTAs from tiger/line shapefile, with cases that more than one points fell within a single ZCTA<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Center for International Earth Science Information Network - CIESIN - Columbia University (2018). Gridded Population of the World, Version 4 (GPWv4): Population Count Adjusted to Match 2015 Revision of UN WPP Country Totals, Revision 11. Palisades, NY: NASA Socioeconomic Data and Applications Center (SEDAC). doi: 10.7927/H4PN93PB. Accessed December 4, 2024.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>the interpretation of the ratio values have things to do with the different number of points between ppp objects, but the color variances is interpretable<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>
