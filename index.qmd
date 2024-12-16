@@ -1,0 +1,70 @@
+---
+title: 24-script
+subtitle: "DSAN 6750 / PPOL 6805: GIS for Spatial Data Science"
+authors:
+  - name: Christy Hsu
+    affiliation: Georgetown University
+    roles: writing
+    corresponding: true
+df-print: kable
+bibliography: GIS_Manuscript.bib
+title-block-banner: "#E69F0095"
+title-block-banner-color: "black"
+format:
+  html:
+    df-print: kable
+    embed-resources: true
+  pdf:
+    # https://quarto.org/docs/reference/formats/pdf.html
+    link-citations: true
+prefer-html: true
+---
+
+## Intro
+
+This is a simple placeholder for the manuscript's main document [@knuth84].
+Seattle-Tacoma-Bellevue, WA
+Portland-Vancouver-Hillsboro, OR-WA
+Spokane-Spokane Valley, WA
+## Literature Review
+
+
+## Methodology
+
+## Initial Evidence
+
+### Visualization
+
+
+
+### Spatial Autocorrelation
+
+`global moran`
+
+calculate the Moran's I statistic
+sensitive to irregularly distributed polygons^[sherrie xie]
+we acquired the most extreme p-value in this case
+
+`LISA`
+
+getting a statistic for each of your polygons, if a region i has a positive deviation from the mean and its neighbor also have high values to the valus is going to be high
+
+## Hypothesis Testing (Regression)
+
+### First order properties of point process
+
+#### Intensity Function
+
+3 ways to estimate the intensity function
+#### Monte Carlo Simulation
+
+#### Relative Intensity Surface
+
+### Second order
+
+
+
+## Discussion
+
+## Conclusion
+
