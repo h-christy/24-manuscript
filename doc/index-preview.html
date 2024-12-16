@@ -360,7 +360,7 @@ background: #E69F0095;
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>nov_ev_fpath <span class="ot">&lt;-</span> <span class="st">'data/nov-ev.gpkg'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ev_sf <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(ev_fpath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ev_sf <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(ev_fpath)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `ev1203' from data source 
   `/Users/toyuan/24-manuscript/data/ev1203.gpkg' using driver `GPKG'
@@ -370,7 +370,7 @@ Dimension:     XY
 Bounding box:  xmin: -124.6274 ymin: 45.596 xmax: -117.0455 ymax: 48.99205
 Geodetic CRS:  WGS 84</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fips_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(fips_fpath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fips_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(fips_fpath)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 1784 Columns: 20
 ── Column specification ────────────────────────────────────────────────────────
@@ -381,7 +381,7 @@ dbl (13): STATEFP20, fips, NAME20, ALAND20, AWATER20, INTPTLAT20, INTPTLON20...
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>wa_poly <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(wa_poly_fpath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>wa_poly <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(wa_poly_fpath)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `wa_poly' from data source 
   `/Users/toyuan/24-manuscript/data/wa_poly.gpkg' using driver `GPKG'
@@ -391,7 +391,7 @@ Dimension:     XY
 Bounding box:  xmin: -124.849 ymin: 45.54354 xmax: -116.9161 ymax: 49.00244
 Geodetic CRS:  NAD83</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>urban_poly <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(urban_fpath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>urban_poly <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(urban_fpath)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `urban_shape' from data source 
   `/Users/toyuan/24-manuscript/data/urban_shape.gpkg' using driver `GPKG'
@@ -401,7 +401,7 @@ Dimension:     XY
 Bounding box:  xmin: -124.1802 ymin: 45.78668 xmax: -117.0418 ymax: 49.0021
 Geodetic CRS:  WGS 84</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>station_sf <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(station_fpath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>station_sf <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(station_fpath)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `stations' from data source 
   `/Users/toyuan/24-manuscript/data/stations.gpkg' using driver `GPKG'
@@ -411,7 +411,7 @@ Dimension:     XY
 Bounding box:  xmin: -124.6629 ymin: 25.91606 xmax: -73.98274 ymax: 48.99526
 Geodetic CRS:  WGS 84</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ct_sf <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(ctsf_fpath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ct_sf <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(ctsf_fpath)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `ct1202' from data source 
   `/Users/toyuan/24-manuscript/data/ct1202.gpkg' using driver `GPKG'
@@ -421,7 +421,7 @@ Dimension:     XY
 Bounding box:  xmin: -124.849 ymin: 45.54354 xmax: -116.9161 ymax: 49.00244
 Geodetic CRS:  WGS 84</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ev_sf7 <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(ev_fpath7)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ev_sf7 <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(ev_fpath7)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `ev1202-3' from data source 
   `/Users/toyuan/24-manuscript/data/ev1202-3.gpkg' using driver `GPKG'
@@ -431,7 +431,7 @@ Dimension:     XY
 Bounding box:  xmin: -124.6274 ymin: 45.596 xmax: -117.0455 ymax: 48.99205
 Geodetic CRS:  WGS 84</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>zcta_sf <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(zcta_fpath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>zcta_sf <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(zcta_fpath)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `zcta-tl' from data source 
   `/Users/toyuan/24-manuscript/data/zcta-tl.gpkg' using driver `GPKG'
@@ -441,7 +441,7 @@ Dimension:     XY
 Bounding box:  xmin: -124.7365 ymin: 45.54354 xmax: -116.9161 ymax: 49.00244
 Geodetic CRS:  WGS 84</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>gpw_pts_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(gpw_pt_fpath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>gpw_pts_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(gpw_pt_fpath)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 548 Columns: 10
 ── Column specification ────────────────────────────────────────────────────────
@@ -453,9 +453,9 @@ date (1): Date
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>gpw_raster <span class="ot">&lt;-</span> <span class="fu">raster</span>(gpw_pop_fpath)</span>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>gpw_raster <span class="ot">&lt;-</span> <span class="fu">raster</span>(gpw_pop_fpath)  </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>nov_sf0 <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(nov_ev_fpath)  <span class="co"># 17025</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>nov_sf0 <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(nov_ev_fpath)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `nov-ev' from data source 
   `/Users/toyuan/24-manuscript/data/nov-ev.gpkg' using driver `GPKG'

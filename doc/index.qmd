@@ -81,22 +81,22 @@ gpw_pop_fpath <- 'data/gpw-popcount.tif'
 nov_ev_fpath <- 'data/nov-ev.gpkg'
 ```
 ```{r message=FALSE}
-ev_sf <- sf::st_read(ev_fpath)
-fips_df <- read_csv(fips_fpath)
+ev_sf <- sf::st_read(ev_fpath)  
+fips_df <- read_csv(fips_fpath)  
 
-wa_poly <- sf::st_read(wa_poly_fpath)
-urban_poly <- sf::st_read(urban_fpath)
+wa_poly <- sf::st_read(wa_poly_fpath)  
+urban_poly <- sf::st_read(urban_fpath)  
 
-station_sf <- sf::st_read(station_fpath)
+station_sf <- sf::st_read(station_fpath)  
 
-ct_sf <- sf::st_read(ctsf_fpath)
-ev_sf7 <- sf::st_read(ev_fpath7)
-zcta_sf <- sf::st_read(zcta_fpath)
+ct_sf <- sf::st_read(ctsf_fpath)  
+ev_sf7 <- sf::st_read(ev_fpath7)  
+zcta_sf <- sf::st_read(zcta_fpath)  
 
-gpw_pts_df <- read_csv(gpw_pt_fpath)
-gpw_raster <- raster(gpw_pop_fpath)
+gpw_pts_df <- read_csv(gpw_pt_fpath)  
+gpw_raster <- raster(gpw_pop_fpath)  
 
-nov_sf0 <- sf::st_read(nov_ev_fpath)  # 17025
+nov_sf0 <- sf::st_read(nov_ev_fpath)  
 ```
 
 #### Functions
