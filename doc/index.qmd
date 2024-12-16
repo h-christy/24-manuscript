@@ -99,6 +99,12 @@ gpw_raster <- raster(gpw_pop_fpath)
 nov_sf0 <- sf::st_read(nov_ev_fpath)  
 ```
 
+- Geometries used in this project are from Census Bureau's TIGER/Line Shapefiles
+  - State Boundaries[@Tl_2020_53_state20]
+  - Census Tracts[@Tl_2020_53_tract20]
+  - Zip Codes[@Tl_2022_us_zcta520]
+  - Urban Areas[@Tl_2020_us_uac20]
+
 #### Functions
 
 function `to_3857` `to_4326` for CRS transform
@@ -199,11 +205,11 @@ At this stage, we are led to understand the concentration of EV registrations at
 
 Using the definition provided by US Census Bureau, we can assign urban or rural labels to each registration. We learn from this classification that 180,490 registrations took place in urban areas, leaving 27,512 in rural areas. This spatial unevenness is evident when we impose the polygons of urban areas onto the EV population distribution.
 
-### Spatial Autocorrelation
+## Initial Evidence: Spatial Autocorrelation
 
 Aside from descriptive statistics and mapping, if we seek a more analytical language for communicating our EDA insights, one common approach is to measure spatial autocorrelation for our data.
 
-#### Global moran's I: Clustering of EV registrations
+### Global moran's I: Clustering of EV registrations
 
 Firstly, we are interested in measuring the autocorrelation of the whole mapped pattern. The way we determine whether our observed point pattern stands out, is to make comparison with the pattern out of complete spatial randomness. The Global Moran's I statistic offers us a way to measures the autocorrelation of the entire observations.
 
@@ -224,7 +230,7 @@ We tried two ways to use `spdep::moran` for calculating Global Moran's I. The st
 
 However, the positivity of this autocorrelation value is not that fruitful on its own. For us to reject CSR or to make sense of the significance of our observed Moran's I statistic, we further did a permutation test using `spdep::moran.mc()` and obtained a pseudo p-value of 0.001. Since this is the most extreme value we can get in the case of 999 Monte Carlo Simulations, the likelihood that we reject CSR while CSR is true is a low one. Given a positive and significant global moran's I, we can say that our observe point pattern differs significantly from a random point pattern in the direction of clustering.[@rconsortiumAnalyzingGeospatialData2022]
 
-##### Moran's I using ZCTAs as bounding polygons and Queen Definition of Neighbors
+#### Moran's I using ZCTAs as bounding polygons and Queen Definition of Neighbors
 
 ```{r}
 zcta_sf <- zcta_sf |> to_4326()
@@ -260,7 +266,7 @@ zcta_mc
 zcta_mc |> plot()
 ```
 
-##### Moran's I using Census Tracts as bounding polygons and Rook definition of neighbors
+#### Moran's I using Census Tracts as bounding polygons and Rook definition of neighbors
 
 ```{r}
 ev_byct <- ev_sf |> group_by(fips) |> summarize(n_ev = n()) |> ungroup()
@@ -280,7 +286,8 @@ Moran's I value
 ct_result <- compute_moran(ct_nb, ct_listw, ct_sf)
 ct_result[[1]]
 ```
-##### visualize neiborhood relation
+
+#### visualize neiborhood relation
 
 ```{r}
 ct_nb_cents <- ct_sf |> st_drop_geometry() |> sf::st_as_sf(coords = c("INTPTLON20", "INTPTLAT20"), crs = 4326)
@@ -299,7 +306,7 @@ ct_mc |> plot()
 ```
 
 
-#### Local Moran's I: detecting clusters
+### Local Moran's I: detecting clusters
 
 With evidence of clustering globally, we also want information about where we can find the clusters. In this case, `spdep::localmoran` can help use with a Moran's I statistic for each census tract.[@geodasoftwareWeek6aLISA2021]
 
@@ -361,7 +368,7 @@ ev_ct_local_p
 
 ![](image/ct_localmoran_p.png)
 
-##### local moran permutation test
+#### local moran permutation test
 
 ```{r}
 ct_localmoran_perm <- spdep::localmoran_perm(
@@ -377,7 +384,7 @@ ct_localmoran_perm |> dim()
 ct_localmoran_perm |> head(2)
 ```
 
-From the conditional permutation test, we can plot local significance map and specify different types of associations. The table below is a count table for a Moran scatter plot, we can see that among 521 census tracts with significant pseudo p-values 306 census tracts exhibit Low-Low associations, 205 census tracts for High-High associations. 
+From the conditional permutation test, we can plot local significance map and specify different types of associations. The table below is a count table for a Moran scatter plot, we can see that among 521 census tracts with significant pseudo p-values 306 census tracts exhibit Low-Low associations, 205 census tracts for High-High associations.[@bivand2017package]
 
 ```{r}
 sign_factor <- hotspot(
@@ -417,14 +424,16 @@ local_perm_map
 
 ![](image/manu-lisa-cluster.png)
 
-Local Moran's I, pseudo p-values from conditional permutation test, and identification of the association types for the significant census tracts, take us to a more in depth understanding of our EV point pattern. Insight into the hotspots and coldspots of EV
-adoption, corresponding to High-High census tracts and Low-Low census tracts is especially helpful because we are inclined to see the hotspots but ignore the coldspots. The LISA Cluster Map reveals to us the clusters centered census tracts with low EV population itself and also surrounded by neighbors with low EV population, this finding is hardly possible to get if we only have the positive cases, or already EV owning househols to visualize. One important aspect of interpreting positive spatial autocorrelation is demonstrated here, we need to think of the bigger picture of clustering as the contribution of attribute, in our case EV count similarity and locational similarity, thus, we won't ignore clusters that have similar low EV counts also have a role to play in this picture. 
+Local Moran's I, pseudo p-values from the conditional permutation test, and identification of the association types for the significant census tracts, take us to a more in-depth understanding of our EV point pattern.
+
+Insight into the hotspots and coldspots of EV
+adoption, corresponding to High-High census tracts and Low-Low census tracts is especially helpful because we are inclined to see the hotspots but ignore the coldspots. The LISA Cluster Map reveals clusters centered census tracts with low EV population themselves are also surrounded by neighbors with low EV population. This finding is hardly possible to get if we only have the positive cases, or already EV owning households to visualize. An important aspect of interpreting positive spatial autocorrelation is demonstrated here: we need to think of the bigger picture of clustering as the contribution of attribute (in our case EV count) similarity and locational similarity, thus, we won't ignore clusters that have similar low EV counts also have a role to play in this picture. [@LocalSpatialAutocorrelation]
 
 ## Hypothesis Testing
 
 This section attempts to deal with another aspect we need to account for when acquiring a positive and significant global autocorrelation value for our point pattern of interest. In our case, we want to evaluate how the spatial inhomogeneity of the Washington state can explain for our initial evidence of clustering.
 
-We want to understand the first-order properties of EV adoption pattern with the awareness of the underlying landscape of the state they have an effect on the adoption potential of different locations. We can take a look at our EV population distribution together with the human population distribution in WA. They appeared to follow very similar distribution, and we do recognize that the core of the definition of an urban area is the spatial distribution of population. 
+We want to understand the first-order properties of EV adoption pattern with the awareness of the underlying landscape of the state that can have an effect on the adoption potential of different locations. We can take a look at our EV population distribution together with the human population distribution in WA. They appeared to follow very similar distribution, and we do recognize that the core of the definition of an urban area is the spatial distribution of population. 
 
 Thus, it will be helpful to set aside other characteristics we associate with the urban label at the time, examine the relationship between the two populations in WA. We expect a better understanding of this relationship can guide us to explore to which extent that the EV counts variations across locations can be explained by the population count variations, and how population distribution as a explanation can have different degrees of effectiveness from one region to another.
 
@@ -518,7 +527,7 @@ Our null hypothesis is: the observed EV point pattern can be directly explained 
 
 ### First order properties of point process
 
-#### Intensity Function
+### Intensity Function
 
 One important limitation of this analysis that needs to be addressed is that we use the WA state boundaries as our observation window. The drawback of this choice is quite obvious: among the three major metropolitan areas in WA, two are situated at the borders of the state -- one with Oregon and the other with Idaho. This can lead to underestimations, as they can have less neighbors as the result of this bounding box.
 
@@ -528,7 +537,7 @@ Constructing the `ppp` object for estimating EV population intensity is a more s
 
 With these ppps at hand `spatstat::density()` can handle these marked ppp and estimate us the intensity function accounting the marks as weights.
 
-##### `zev_ppp`
+#### `zev_ppp`
 
 ```{r}
 ev_counts <- ev_counts |> dplyr::select(count)
@@ -565,7 +574,9 @@ zev_int_v <- zev_ppp |> density(
 zev_int_v[[1]]
 ```
 
-##### `pop_int`
+#### `pop_int`
+
+- The data used for population counts by Census Tract[@Census2020DECENNIALDP2020.DP1]
 
 ```{r}
 fips_centroid_sf <- fips_df |> sf::st_as_sf(
@@ -596,7 +607,7 @@ relative_int(zev_ppp, pop_ppp)
 
 With these ppps at hand `spatstat::density()` can handle these marked ppp and estimate us the intensity function accounting the marks as weights.
 
-##### `gpw_ppp`
+#### `gpw_ppp`
 
 ```{r}
 # gpw_zpts_df$Date |> summary() # 2020-07-01
@@ -638,16 +649,16 @@ relative_int(zev_ppp, gpw_ppp)
 ```
 ![](image/manu-zpts-ratio.png)
 
-#### Relative Intensity Surface
+### Relative Intensity Surface
 
-We use the optimal bandwidths given by spatstat and make adjustments to calculate intensity ratios between our case point pattern to the base rate point pattern. By eliminating the effect of the human population intensity of WA, the relative intensity surface plots still exhibit uneven ratio from location to location suggesting us that point pattern of EV population is a special one.^[the interpretation of the ratio values have things to do with the different number of points between ppp objects, but the color variances is interpretable]
+We use the optimal bandwidths given by spatstat and make adjustments to calculate intensity ratios between our case point pattern to the base rate point pattern. By eliminating the effect of the human population intensity of WA, the relative intensity surface plots still exhibit uneven ratio from location to location suggesting us that point pattern of EV population is a special one.^[the interpretation of the ratio values have things to do with the different number of points between ppp objects, but the color variances is interpretable][@moragaChapter21Intensity]
 
 
-#### Monte Carlo Simulation
+### Monte Carlo Simulation
 
 We deploy quadrat count to understand how intensity varies from dividing the state in to equal regions of "Low", "Medium" and "High" population. Two intensity functions constructed by Census tract level population count and GPW population count are used as the null point process in the Monte Carlo simulation.
 
-##### divide regions for quadrat count
+#### divide regions for quadrat count
 
 ```{r}
 n_regions <- 3
@@ -660,7 +671,7 @@ pop_areas <- tess(image = pop_cut)
 plot(pop_areas)
 ```
 
-##### computational approach: 999 simulations
+#### computational approach: 999 simulations
 
 ```{.r}
 set.seed(6805)
@@ -688,7 +699,7 @@ compute_quadrat_counts <- function(sim_ppp) {
 }
 ```
 
-##### calculate test statistic from observations
+#### calculate test statistic from observations
 
 ```{r}
 ev_ppp <- ev_sf |> sf_to_ppp()
@@ -696,7 +707,8 @@ obs_counts <- compute_quadrat_counts(ev_ppp)
 obs_counts
 ```
 
-##### calculate test statistic from simulations
+#### calculate test statistic from simulations
+
 ```{.r}
 sims_region_counts <- lapply(
   X = ev_sims_list,
@@ -801,7 +813,7 @@ Knowing the adoption pattern and characteristics of those who already owns an EV
 One perspective confirmed by this project is that, it is actually not that hard to discover EV hotspots, we can find them generally in the urban areas or metro areas, though they may have different degrees of concentration. For example, the heart of Seattle Metro area, census tracts in King County out-performed both the CRS distribution and population distribution. In the case of Clark county and Spokane city, the results are less significant, however, may be due to the effect of the observation window.
 On the other hand, detecting coldspots requires many more steps, and we tend to underestimate the contribution of local Low-Low clusters to the global clusterness. But coldspots are indeed part of--and might be the essence of--the inequality behind the uneven spatial pattern of EV adoption.
 
-Most of the analysis in this project is at the exploratory stage. As the last section of the project, we are to think about where the EDA result can take us. 
+Most of the analysis in this project is at the exploratory stage. As the last section of the project, we are to think about where the EDA results can take us. 
 
 Two of the main reason that people usually give for not considering an EV are: EVs are not affordable, and that EVs are not reliable in terms of the lack of access to charging equipment. [@kikuchi310Americans2024]
 
@@ -816,6 +828,8 @@ Addressing the unevenness of adoption and the importance of the visibility of EV
 The following note is an attempt to take the previous approaches, but this time analyzing the distribution of EV charging station. Some early findings from the relative intensity ratio of charging stations on EV registrations are that the charging station distribution is somewhat more even compared to the EV registrations.
 
 ::: {.callout-note appearance="simple" collapse="true" title ="Distribution of Public Charging Stations in WA"}
+
+- Data for locations of public charging stations are from AFDC api[@AllStationsAPI]
 
 ```{.python}
 import requests
