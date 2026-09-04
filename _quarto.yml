@@ -1,6 +1,9 @@
 project:
   type: manuscript
   output-dir: docs
+  resources:
+   - image/**
+
 
 manuscript:
   article: index.qmd
